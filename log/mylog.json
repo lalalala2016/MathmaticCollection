@@ -1,0 +1,16 @@
+{"id": 8, "question": "计算$\\frac{1}{2} + \\frac{3}{2^2} + \\frac{5}{2^3} +... + \\frac{2n-1}{2^n}+...$", "answer": "3", "reply": "？？"}
+{"id": 9, "question": "计算$\\sum_{n=1}^{\\infty}ne^{-nx}$", "answer": NaN, "reply": "？？"}
+{"id": 8, "question": "计算$\\frac{1}{2} + \\frac{3}{2^2} + \\frac{5}{2^3} +... + \\frac{2n-1}{2^n}+...$", "answer": "3", "reply": "？？"}
+{"id": 9, "question": "计算$\\sum_{n=1}^{\\infty}ne^{-nx}$", "answer": NaN, "reply": "？？"}
+{"id": 8, "question": "计算$\\frac{1}{2} + \\frac{3}{2^2} + \\frac{5}{2^3} +... + \\frac{2n-1}{2^n}+...$", "answer": "3", "reply": "？？"}
+{"id": 9, "question": "计算$\\sum_{n=1}^{\\infty}ne^{-nx}$", "answer": NaN, "reply": "？？"}
+{"id": 0, "question": "讨论数项级数$\\frac{1}{1*2}+\\frac{1}{2*3}+...+\\frac{1}{n*(n+1)}_...$的敛散性", "answer": "收敛为1", "reply": "？"}
+{"id": 1, "question": "证明：调和级数$1+\\frac{1}{2}+\\frac{1}{3}+...+\\frac{1}{n}+...$是发散的", "answer": "发散", "reply": "？"}
+{"id": 2, "question": "讨论数项级数$\\sum \\frac{(n+\\frac{1}{n})^n}{n^{n+\\frac{1}{n}}}$的敛散性", "answer": "$lim_{n \\to \\infty}u_n=1$不等于0,发散", "reply": "？"}
+{"id": 3, "question": "使用柯西准则证明级数$\\sum\\frac{1}{n^2}$收敛", "answer": "N=[$\\frac{1}{\\epsilon}$]", "reply": "？"}
+{"id": 4, "question": "判别级数$\\frac{1}{\\sqrt{2}-1}-\\frac{1}{\\sqrt{2}+1}+\\frac{1}{\\sqrt{3}-1}+\\frac{1}{\\sqrt{3}+1}+...$的敛散性", "answer": "发散", "reply": "？"}
+{"id": 5, "question": "考察$\\sum \\frac{1}{n^2-n+1}$的敛散性", "answer": "收敛", "reply": "？"}
+{"id": 6, "question": "证明级数$\\sum \\frac{1}{2^n-n}$收敛", "answer": "收敛", "reply": "？"}
+{"id": 7, "question": "证明：级数$\\sum sin\\frac{1}{n} = sin1 + sin\\frac{1}{2}+...+sin\\frac{1}{n}+...$发散", "answer": "发散", "reply": "？"}
+{"id": 8, "question": "计算$\\frac{1}{2} + \\frac{3}{2^2} + \\frac{5}{2^3} +... + \\frac{2n-1}{2^n}+...$", "answer": "3", "reply": "？"}
+{"id": 9, "question": "计算$\\sum_{n=1}^{\\infty}ne^{-nx}$", "answer": NaN, "reply": "？"}
