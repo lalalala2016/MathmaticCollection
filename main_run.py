@@ -8,6 +8,7 @@ import time
 import pandas as pd
 import streamlit as st
 
+
 def read_data(choose_topic):
     '''读入习题数据'''
     if choose_topic == '数学分析':
@@ -176,7 +177,7 @@ def analysis_result():
         st.markdown('本次回答: ' + reply)
 
 
-def test_pattern(choose_topic,choose_class,choose_range):
+def test_pattern(choose_topic, choose_class, choose_range):
     '''测试模式'''
     st.title(choose_topic + choose_class + '习题测试')
     st.write('\n')
@@ -201,14 +202,22 @@ def test_pattern(choose_topic,choose_class,choose_range):
                 st.warning('请先提交答案！！')
 
 
-def learning_pattern(choose_topic,choose_class,choose_range):
+def show_answer(answer):
+    if '![]' not in answer:
+        st.markdown(answer)
+    else:
+        road = answer.split('![](')[-1].replace('\\', '/').replace(')', '')
+        st.image(road)
+
+
+def learning_pattern(choose_topic, choose_class, choose_range):
     '''学习模式'''
     st.title(choose_topic + choose_class + '学习')
     st.write('\n')
     data = read_data(choose_topic)
     class_data = data[data['单元'] == choose_class].reset_index(drop=True)
     class_data_index = list(class_data.index)
-    if class_data.shape[0]>0:
+    if class_data.shape[0] > 0:
         range_list = get_value_range(choose_range)
         if max(range_list) in class_data_index:
             for i in range_list:
@@ -217,12 +226,13 @@ def learning_pattern(choose_topic,choose_class,choose_range):
                 answer = str(class_data['答案'][id])
                 st.markdown('`question' + str(id) + '`: ' + question)
                 if st.checkbox('答案' + str(id)):
-                    st.markdown('答案: ' + answer)
+                    show_answer(answer)
                 st.write('\n')
         else:
             st.warning('数据溢出，该范围超出题库')
     else:
         st.warning('数据溢出，暂无该单元')
+
 
 def main_web():
     '''网页主要成份'''
@@ -232,8 +242,8 @@ def main_web():
     choose_range = st.sidebar.selectbox('范围', ('1-10', '11-20'))
     choose_pattern = st.sidebar.selectbox('模式', ('学习', '测试'))
     # 主页面内容
-    if choose_pattern=='学习':
-        learning_pattern(choose_topic,choose_class,choose_range)
+    if choose_pattern == '学习':
+        learning_pattern(choose_topic, choose_class, choose_range)
     else:
         test_pattern(choose_topic, choose_class, choose_range)
 
