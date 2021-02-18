@@ -11,7 +11,11 @@ def change_row_index(i, aug_matrix):
     # 下三角值
     index_value = [np.abs(m[0]) for m in aug_matrix[i:, i].tolist()]
     if 1 in index_value:
+        # 如果有1，优先交换1
         change_index = i + index_value.index(1)
+    elif index_value[1]>0:
+        # 如果下一行值不为0，则与下一行交换
+        change_index = i+1
     else:
         change_index = i
     return change_index
@@ -47,7 +51,7 @@ def reback_matrix(new_mat):
     主角仍旧是(i,i)上的值
     消到全是线性无关向量为止
     '''
-    print('========= 网上走，做线性无关向量组合 ==============')
+    print('========= 往上走，做线性无关向量组合 ==============')
     number = new_mat.shape[0]  # 方程数
     for i in range(number - 1, 0, -1):
         # 4,3,2,1
@@ -98,6 +102,7 @@ def revert(new_mat):
     else:
         print('有无穷多解')
 
+
 def stand_matrix(new_mat):
     # 对角上都为1，方便对答案
     print('========= 标准化 ==============')
@@ -107,7 +112,7 @@ def stand_matrix(new_mat):
         if main_v == 0:
             # 如果最后一行全是0，则继续
             continue
-        deal_inf = [n / main_v if n!=0 else 0 for n in new_mat[i, :].tolist()[0]]
+        deal_inf = [n / main_v if n != 0 else 0 for n in new_mat[i, :].tolist()[0]]
         new_mat[i, :] = deal_inf
     return new_mat
 
@@ -184,23 +189,40 @@ def matrix_collection(choose=1):
                              [7, 0, 0, -1, 4],
                              [10, 0, 0, 0, 2],
                              [0, 0, 0, 0, -1]], dtype=float)
-    elif choose== 9:
+    elif choose == 9:
         # 第6题
-        aug_matrix = np.mat([[1,2,3,-1,1],
-                             [3,2,1,-1,1],
-                             [2,3,1,1,1],
-                             [2,2,2,-1,1],
-                             [5,5,2,0,2]], dtype=float)
+        aug_matrix = np.mat([[1, 2, 3, -1, 1],
+                             [3, 2, 1, -1, 1],
+                             [2, 3, 1, 1, 1],
+                             [2, 2, 2, -1, 1],
+                             [5, 5, 2, 0, 2]], dtype=float)
     else:
         # 第6题答案
-        aug_matrix = np.mat([[0,0,0,0,0],
-                             [0,5,7,0,2],
-                             [0,0,-1.2,1,-0.2],
-                             [-1,0,1,0,0],
-                             [0,0,0,0,0]], dtype=float)
+        aug_matrix = np.mat([[0, 0, 0, 0, 0],
+                             [0, 5, 7, 0, 2],
+                             [0, 0, -1.2, 1, -0.2],
+                             [-1, 0, 1, 0, 0],
+                             [0, 0, 0, 0, 0]], dtype=float)
+    return aug_matrix
+
+
+def second_part(choose=0):
+    if choose==1:
+        # 课本第二题（1）
+        # 计算正确的
+        aug_matrix = np.mat([[1, 1, 1, 1, 1],
+                             [1, 1, -1, -1, 2],
+                             [1, -1, 1, -1, 1],
+                             [1, -1, -1, 1, 1]], dtype=float)
+    else:
+        # 课本第二题（2）
+        aug_matrix = np.mat([[1, 2, 1, 0, 0],
+                             [1, 1, 1, 1, 0],
+                             [0, 3, 0, -1, 0],
+                             [1, 1, 0, -1, 1]], dtype=float)
     return aug_matrix
 
 
 if __name__ == "__main__":
-    aug_matrix = matrix_collection(choose=9)
+    aug_matrix = second_part()
     main_run(aug_matrix)
