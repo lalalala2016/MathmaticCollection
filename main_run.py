@@ -210,42 +210,41 @@ def show_answer(answer):
         st.image(road)
 
 
-def learning_pattern(choose_topic, choose_class, choose_range):
-    '''学习模式'''
-    st.title(choose_topic + choose_class + '学习')
-    st.write('\n')
-    data = read_data(choose_topic)
-    class_data = data[data['单元'] == choose_class].reset_index(drop=True)
-    class_data_index = list(class_data.index)
-    if class_data.shape[0] > 0:
-        range_list = get_value_range(choose_range)
-        if max(range_list) in class_data_index:
-            for i in range_list:
-                id = range_list[i]
-                question = class_data['习题描述'][id]
-                answer = str(class_data['答案'][id])
-                st.markdown('`question' + str(id) + '`: ' + question)
-                if st.checkbox('答案' + str(id)):
-                    show_answer(answer)
-                st.write('\n')
-        else:
-            st.warning('数据溢出，该范围超出题库')
-    else:
-        st.warning('数据溢出，暂无该单元')
+# def learning_pattern(choose_topic, choose_class, choose_range):
+#     '''学习模式'''
+#     st.title(choose_topic + choose_class + '学习')
+#     st.write('\n')
+#     data = read_data(choose_topic)
+#     class_data = data[data['单元'] == choose_class].reset_index(drop=True)
+#     class_data_index = list(class_data.index)
+#     if class_data.shape[0] > 0:
+#         range_list = get_value_range(choose_range)
+#         if max(range_list) in class_data_index:
+#             for i in range_list:
+#                 id = range_list[i]
+#                 question = class_data['习题描述'][id]
+#                 answer = str(class_data['答案'][id])
+#                 st.markdown('`question' + str(id) + '`: ' + question)
+#                 if st.checkbox('答案' + str(id)):
+#                     show_answer(answer)
+#                 st.write('\n')
+#         else:
+#             st.warning('数据溢出，该范围超出题库')
+#     else:
+#         st.warning('数据溢出，暂无该单元')
 
 
 def main_web():
     '''网页主要成份'''
     # 侧边栏
     choose_topic = st.sidebar.selectbox('选择主题', ('数学分析', '高等代数'))
-    choose_class = st.sidebar.selectbox('单元', ('第一章', '第五章', '第十二章'))
-    choose_range = st.sidebar.selectbox('范围', ('1-10', '11-20'))
-    choose_pattern = st.sidebar.selectbox('模式', ('学习', '测试'))
+    choose_class = st.sidebar.selectbox('单元', ('第一章', '第二章', '第三章', '第四章', '第五章',
+                                               '第六章', '第七章', '第八章', '第九章', '第十章', '第十一章',
+                                               '第十二章', '第十三章', '第十四章', '第十五章', '第十六章', '第十七章',
+                                               '第十八章', '第十九章', '第二十章', '第二十一章'))
+    choose_range = st.sidebar.selectbox('范围', ('1-10', '11-20', '21-30', '31-40', '41-50', '51-60'))
     # 主页面内容
-    if choose_pattern == '学习':
-        learning_pattern(choose_topic, choose_class, choose_range)
-    else:
-        test_pattern(choose_topic, choose_class, choose_range)
+    test_pattern(choose_topic, choose_class, choose_range)
 
 
 if __name__ == '__main__':
