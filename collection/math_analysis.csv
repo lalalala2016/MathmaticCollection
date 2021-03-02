@@ -53,12 +53,27 @@ $\lim_{k \to \infty}(a_{n_k+1}+a_{n_k+2}+...+a_{n_k+p_k})=0$",证明,裴礼文,柯西准
 （2）$\int_a^be^xdx = e^x|_a^b = e^b - e^a$
 （3）$\int_a^b\frac{dx}{x^2}=-x^{-1}|_a^b = -\frac{1}{b} + \frac{1}{a}$
 （4）$\int_0^{\pi}sinxdx = -cosx|_0^{\pi} = -(-1-1)=2$
-（5）【暂放】",课本,计算,1,牛顿莱布尼茨公式,20210224
+（5）$\int_0^2\sqrt{4-x^2}dx = \frac{8}{3}$",课本,计算,1,牛顿莱布尼茨公式,20210224
 43,第九章,课本例题P208,"利用定积分求极限
 $\lim_{n \to \infty}(\frac{1}{n+1}+\frac{1}{n+2}+...+\frac{1}{2n})$","转换为积分和的形式$J = lim_{n \to \infty}\sum_{i=1}^n\frac{1}{1+\frac{i}{n}}\frac{1}{n}$
 可以看做函数$f(x)=\frac{1}{1+x}$在区间[0,1]上的积分和，使用等分分割$\Delta x_i=\frac{1}{n}$，
 故$J = \int_0^1\frac{1}{1+x}dx = ln(1+x)|_0^1 = ln2$",课本,计算,1,积分与极限的转换,20210224
-44,第九章,课本例题P219,"求$\int_{-1}^1f(x)dx$，
-其中$f(x)=\begin{cases}2x-1,&-1\leq x\leq 0\\e^{-x},&0 \leq x \leq 1\end{cases}$",,课本,计算,1,可积证明,20210224
-45,第九章,,,,,,,,
-46,第九章,,,,,,,,
+44,第九章,课本例题P213,"证明函数$f(x) = \begin{cases}0,&x=0\\\frac{1}{n},&\frac{1}{n+1} \leq x \leq \frac{1}{n}\end{cases}$在区间[0,1]可积","证明：
+任取$\epsilon>0$，由于$lim_{n \to \infty}\frac{1}{n}=0$，因此存在N，当n>N时，有$\frac{1}{n}<\frac{\epsilon}{2}$
+说明函数f(x)在$[\frac{\epsilon}{2},1]$上有有限个间断点，函数有界且间断点有限则可积，存在分割T’，使得$\sum_{T'}w_i\Delta x_i<\frac{\epsilon}{2}$
+f在小区间上的振幅$w_0<1$，所以$w_0\Delta x_0 = w_0*\frac{\epsilon}{2}$
+把小区间$[0,\frac{\epsilon}{2}]$上与T‘合并，使其称为[0,1]上的分割T，得到
+$\sum_T = w_0*\Delta x_0 + \sum_{T'}w_i\Delta x_i <\epsilon$",课本,计算,1,可积证明,20210225
+45,第九章,课本例题P213,"证明黎曼函数$f(x)=\begin{cases}\frac{1}{q},&x=\frac{p}{q}<1,pq互素\\0,&x=0，1,无理数\end{cases}$在区间[0,1]有积，且$\int_0^1f(x)dx=0$",暂放,课本,计算,3,可积证明，看着答案抄都抄不明白,20210225
+46,第九章,课本例题P219,"求$\int_{-1}^1f(x)dx$，
+其中$f(x)=\begin{cases}2x-1,&-1\leq x\leq 0\\e^{-x},&0 \leq x \leq 1\end{cases}$",![](.\华东数学分析\images\定积分3.jpg),课本,计算,1,可积证明,20210225
+47,第九章,课本例题P219,"证明：若f在[a,b]上连续，且$f(x) \geq 0$，$\int_a^b f(x)dx=0$，则$f(x)==0,x \in [a,b]$","证明：反正法
+若有某$x_0 \in [a,b]$，使得$f(x_0)>0$，则由连续函数的局部保号性，存在$x_0$的某领域$(x-\delta,x+\delta)$使其满足$f(x)>\frac{f(x_0)}{2}>0$
+则$\int_a^b f(x)dx=\int_a^{x_0-\delta} f(x)dx + \int_{x_0-\delta}^{x_0+\delta} f(x)dx + \int_{x_0+\delta}^b f(x)dx \geq 0 + f(x_0)\delta + 0 >0$
+这与假设矛盾，故$f(x)==0,x \in [a,b]$",课本,计算,1,证明题,20210225
+48,第九章,课本例题P221,"求$f(x)=sinx$在$[0,\pi]$上的平均值",![](.\华东数学分析\images\定积分4.jpg),课本,计算,1,积分的性质,20210225
+49,第九章,课本例题P221,"设f在[0,1]上连续，求$lim_{n \to \infty}\int_a^bf(\sqrt[n]{x})dx$",,课本,计算,1,积分的极限,20210228
+50,,,,,,,,,
+51,,,,,,,,,
+52,,,,,,,,,
+53,,,,,,,,,
