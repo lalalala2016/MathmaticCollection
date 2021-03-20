@@ -11,3 +11,5 @@ collection of math  information
 
 [3] math is fun:  https://www.mathsisfun.com
 
+[4] 可爱的代数教材： http://immersivemath.com/ila/index.html
+

@@ -1,47 +1,47 @@
 # ===================================
 # @Time : 2020/11/30 22:55
 # 求积分
-# https://zhuanlan.zhihu.com/p/102413094
 # ===================================
 
-import numpy as np
-from matplotlib import pyplot as plt
-
-x = np.linspace(0,6,1000)
-y = np.cos(2*np.pi*x)*np.exp(-x)+1.2
-
-plt.axis([np.min(x),np.max(x),0,np.max(y)])           #坐标范围
-plt.plot(x,y,label="$cos(2πx)e^{-x}+1.2$")            #画曲线，带图示
-plt.fill_between(x,y1=y,y2=0,where=(x>=0.7)&(x<=4),   #填充积分区域
-                 facecolor='blue',alpha=0.2)
-plt.text(0.5*(0.7+4),0.4,r"$\int_{0.7}^4(cos(2πx)e^{-x}+1.2)\mathrm{d}x$",
-         horizontalalignment='center',fontsize=14)    #增加说明文本
-plt.legend()                                          #显示图示
-plt.show()
+from sympy import integrate,Integral,simplify,latex
+from sympy.abc import x,y,u,v,a,b,c,d,n,m
+from sympy.integrals.manualintegrate import integral_steps
+from sympy import atan
 
 
-def sum_bar_area():
-    '''划分小矩形求和
-    '''
-    import numpy as np
+def analysis_steps(steps):
+    try:
+        # 目标函数
+        context = steps.context
+        field = steps._fields
+    except:
+        for line in steps:
+            analysis_steps(line)
+    else:
+        if 'alternatives' in field:
+            print('函数变更：$'+latex(Integral(context,x))+'$')
+            new_steps = steps.alternatives[0]
+            f1 = '$'+latex(Integral(new_steps.rewritten,x))+'$'
+            print('='+f1+'\n')
+            analysis_steps(new_steps)
+        if 'rewritten' in field:
+            new_f = '$'+latex(Integral(steps.rewritten,x))+'$'
+            print('函数Rewritten：$' + latex(Integral(context,x)) + '$ ='+new_f+'\n')
+            new_steps = steps.substep.substeps
+            analysis_steps(new_steps)
+        if 'substeps' in field:
+            new_steps = steps.substeps
+            analysis_steps(new_steps)
+        if 'other' in field:
+            result = simplify(integrate(context,x))
+            out4 = '$'+latex(Integral(context,x))+'='+latex(result)+'$'
+            print('分项积分：'+out4+'\n')
 
-    x = np.linspace(0.7, 4.0, 1000)
-    y = np.cos(2 * np.pi * x) * np.exp(-x) + 1.2
-    dx = x[1] - x[0]  # 每个矩形的宽度
-    fArea = np.sum(y * dx)  # 矩形宽*高，再求和
-    print("Integral area:", fArea)
 
 
-def use_quad():
-    import math
-    from scipy import integrate
-
-    def func(x):
-        print("x=", x)  # 用于展示quad()函数对func的多次调用
-        return math.cos(2 * math.pi * x) * math.exp(-x) + 1.2
-
-    fArea, err = integrate.quad(func, 0.7, 4)
-    print("Integral area:", fArea)
-
-if __name__ == '__main__':
-    print()
+f_x = atan(x)
+out_f = '$'+latex(Integral(f_x,x))+'$'
+steps = integral_steps(f_x,x)
+analysis_steps(steps)
+f_x_result = '$'+latex(simplify(integrate(f_x,x)))+'$'
+print('结果为：'+out_f+'='+f_x_result)
