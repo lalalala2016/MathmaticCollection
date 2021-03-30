@@ -45,25 +45,25 @@ def analysis_indefinite_integral(f):
     steps = integral_steps(f, x)
     analysis_steps(steps)
 
-def abnormal_convergence(f):
-    '''反常积分是否收敛？'''
+# def abnormal_convergence(f):
+#     '''反常积分是否收敛？'''
 
 
 # def analysis_definite_integrate():
 #     '''定积分的计算'''
 
-
-math_func = in_class()
-# 反常积分载入
-f_info = math_func['for_arcsin_f']
-f = f_info['func']
-a = f_info['a']
-b = f_info['b']
-# 反常积分结果
-f_str = '$' + latex(Integral(f, (x, a, b))) + '$'
-result = '$' + latex(integrate(f, (x, a, b))) + '$'
-print('反常积分: ' + f_str + '=' + result)
-plot_line(f, a, b)
+def testss():
+    math_func = in_class()
+    # 反常积分载入
+    f_info = math_func['for_arcsin_f']
+    f = f_info['func']
+    a = f_info['a']
+    b = f_info['b']
+    # 反常积分结果
+    f_str = '$' + latex(Integral(f, (x, a, b))) + '$'
+    result = '$' + latex(integrate(f, (x, a, b))) + '$'
+    print('反常积分: ' + f_str + '=' + result)
+    plot_line(f, a, b)
 
 
 def test():
@@ -82,3 +82,5 @@ def test():
         count_limit(f1, u, oo)
         f2 = define_integrate.args[1]
         count_limit(f2, u, oo)
+
+limit(x**2.5/sqrt(x**5+1),x,oo)
