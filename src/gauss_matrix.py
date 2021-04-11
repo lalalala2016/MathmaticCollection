@@ -224,5 +224,9 @@ def second_part(choose=0):
 
 
 if __name__ == "__main__":
-    aug_matrix = second_part()
-    main_run(aug_matrix)
+    aug_matrix = np.mat([[1, 1, -1, -1],
+                         [2, -1, 2, -1],
+                         [-1, 1, 1,0],
+                         [0, 1, 1, 1]], dtype=float)
+    #main_run(aug_matrix)
+    print(np.linalg.inv(aug_matrix))
