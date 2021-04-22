@@ -11,7 +11,7 @@ collection of math  information
 
 [3] math is fun:  https://www.mathsisfun.com
 
-[4] 可爱的代数教材： http://immersivemath.com/ila/index.html
+[4] 可爱的、交互的代数教材（强烈推荐）： http://immersivemath.com/ila/index.html
 
 [5] 数学之旅（6皆课，很有意思的）： https://open.163.com/newview/movie/free?pid=M8PTB0GHI&mid=M8PTBPAF6
 
