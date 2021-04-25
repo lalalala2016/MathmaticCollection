@@ -150,6 +150,22 @@ $\beta = -\sum_{i}\frac{k_i}{k_{r+1}}a_i$
 117,第七章,书籍习题1(6),在P[x]中，$\mathscr{A}f(x)=f(x_0)$是否为线性变换,![](.\高等代数\images\线性变换6.png),P42,线性变换判断,判断,20210422,
 118,第七章,书籍习题1(7),,,,题目都看不懂,,20210422,
 119,第七章,书籍习题1(8),"在$P^{n*n}$中，$\mathscr{A}(X)=BXC,(B,C \in P^{n*n}是固定矩阵)$",![](.\高等代数\images\线性变换7.png),P42,线性变换判断,判断,20210422,
-120,第七章,,,,,,,,
-,第七章,,,,,,,,
-,第七章,,,,,,,,
+120,第七章,书籍习题2,"在几何空间中，取直角坐标系oxy,$\mathscr{A}$表示将空间绕ox轴由oy向oz方向旋转90度的变换,$\mathscr{B}$表示由oy向ox方向旋转90度的变换,$\mathscr{C}$表示将空间绕oz轴由ox向oy方向旋转90度的变换,证明$\mathscr{A}^4 = \mathscr{B}^4 = \mathscr{C}^4=E,\mathscr{A}\neq \mathscr{B}$",![](.\高等代数\images\线性变换8.png),P43,线性变换,证明,20210423,
+121,第七章,书籍习题3,"在P[x]中，$\mathscr{A}f(x)=f'(x),\mathscr{B}f(x)=xf(x)$，证明$\mathscr{A}\mathscr{B}-\mathscr{B}\mathscr{A}=\mathscr{E}$",![](.\高等代数\images\线性变换9.png),P43,线性变换,证明,20210423,
+122,第七章,书籍习题4,设$\mathscr{A}\mathscr{B}$是线性变换，如果$\mathscr{A}\mathscr{B}-\mathscr{B}\mathscr{A}=\mathscr{E}$，证明$\mathscr{A}^k\mathscr{B}-\mathscr{B}\mathscr{A}^k=k\mathscr{A}^{k-1}(k>1)$,![](.\高等代数\images\线性变换10.png),P43,线性变换,证明,20210423,
+123,第七章,书籍习题5,证明：可逆变换是双射,![](.\高等代数\images\线性变换11.png),P43,线性变换,证明,20210423,
+124,第七章,书籍习题6,"设$\epsilon_1,\epsilon_2,...,\epsilon_n$是线性空间V的一组基，$\mathscr{A}$是V上的线性变换，证明：$\mathscr{A}$可逆当且仅当$\mathscr{A}\epsilon_1,...,\mathscr{A}\epsilon_n$线性无关",![](.\高等代数\images\线性变换12.png),P43,线性变换,证明,20210425,
+125,第七章,书籍习题7(1),"在$P^3$中$\mathscr{A}(x_1,x_2,x_3)=(2x_1-x_2,x_2+x_3,x_1)$，求变换$\mathscr{A}$在基$\epsilon_1,\epsilon_2,\epsilon_3$下的矩阵",![](.\高等代数\images\线性变换13.png),P43,线性变换,证明,20210425,
+126,第七章,书籍习题7(3),"在空间$P[x]_n$中，设变换$\mathscr{A}$为$f(x) \to f(x+1)-f(x)$，$\mathscr{A}$在基$\epsilon_0=1,\epsilon=\frac{x(x-1)...(x-i+1)}{i!},(i=1,2,...,n-1)$",![](.\高等代数\images\线性变换14.png),P43,线性变换,证明,20210425,
+127,第七章,书籍习题7(4),"六个函数的所有实系数线性组合构成实系数域上一个六维线性空间，求微分变换$\mathscr{D}$的矩阵
+$\epsilon_1=e^{ax}cosbx,\epsilon_2=e^{ax}sinbx$
+$\epsilon_3=xe^{ax}cosbx, \epsilon_4=xe^{ax}sinbx$
+$\epsilon_5=0.5x^2e^{ax}cosbx,\epsilon_6=0.5x^2e^{ax}sinbx$",![](.\高等代数\images\线性变换15.png),P43,线性变换,证明,20210425,
+128,第七章,书籍习题7(5),"已知$P^3$中线性变换$\mathscr{A}$在基$\eta_1=(-1,1,1),\eta_2=(1,0,-1),\eta_3=(0,1,1)$下的矩阵是[[1,0,1],[1,1,0],[-1,2,1]]，求$\mathscr{A}$在基$\epsilon_1,\epsilon_2,\epsilon_3$下的矩阵",![](.\高等代数\images\线性变换16.png),P43,线性变换,证明,20210425,
+129,第七章,书籍习题7(6),"在$P^3$中，$\mathscr{A}$定义如下$\mathscr{A}\eta_1=(-5,0,3)$,$\mathscr{A}\eta_1=(0,-1,6)$,$\mathscr{A}\eta_1=(-5,-1,9)$
+其中$\eta_1=(-1,0,2),\eta_2=(0,1,1),\eta_3=(3,-1,0)$，求$\mathscr{A}$在基$\epsilon_1,\epsilon_2,\epsilon_3$下的矩阵",![](.\高等代数\images\线性变换17.png),P43,线性变换,证明,20210425,
+130,第七章,书籍习题7(7),"在$P^3$中，$\mathscr{A}$定义如下$\mathscr{A}\eta_1=(-5,0,3)$,$\mathscr{A}\eta_1=(0,-1,6)$,$\mathscr{A}\eta_1=(-5,-1,9)$
+其中$\eta_1=(-1,0,2),\eta_2=(0,1,1),\eta_3=(3,-1,0)$，求$\mathscr{A}$在基下的$\eta_1,\eta_2,\eta_3$矩阵",![](.\高等代数\images\线性变换18.png),P43,线性变换,证明,20210425,
+131,第七章,书籍习题8,"在$P^{2*2}$中定义线性代数$\mathscr{A}_1(X)=[[a,b],[c,d]]X$,$\mathscr{A}_2(X)=X[[a,b],[c,d]]$,$\mathscr{A}_3(X)=[[a,b],[c,d]]X[[a,b],[c,d]]$，求$\mathscr{A}_1,\mathscr{A}_2,\mathscr{A}_3$在基$E_{11},E_{12},E_{21},E_{22}$下的矩阵。",![](.\高等代数\images\线性变换19.png),P43,线性变换,证明,20210425,
+132,第七章,书籍习题19(1),"$\mathscr{A}$在一组基下的矩阵为[[3,4],[5,2]]，求在复数域上的特征特征值与特征向量",![](.\高等代数\images\线性变换20.png),P56,求特征值与特征向量,求解,20210425,
+133,第七章,书籍习题19(2),"$\mathscr{A}$在一组基下的矩阵为[[0,a],[-a,0]]，求在复数域上的特征特征值与特征向量",![](.\高等代数\images\线性变换21.png),P56,求特征值与特征向量,求解,20210425,
