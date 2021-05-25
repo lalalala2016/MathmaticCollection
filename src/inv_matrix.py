@@ -483,8 +483,6 @@ def test_1():
     A4_det = factor(A4.det())
     print('2阶子式21：${}={}$'.format(latex(A4), latex(A4_det)))
 
-
-
     D_3 = factor(A.det())
     print('三阶子式为|A|，最大公因式为本身，$D_3 = {}$'.format(latex(D_3)))
     # print('2级子式:${},{}$,首项系数为1的最大公因式$D_1={}$'.format(latex(f1), latex(f2), latex(D_1)))
