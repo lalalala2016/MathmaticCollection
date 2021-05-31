@@ -21,3 +21,7 @@ collection of math  information
 
 
 
+typora： https://support.typora.io/Links/#faq
+
+
+
