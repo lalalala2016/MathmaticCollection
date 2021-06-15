@@ -193,6 +193,9 @@ def test1():
     # 指数形式
     limit_e_func(func, x, x_trend)
 
+func = 1/(x+1)-3/(x**3+1)
+simplify(func)
+limit(func,x,-1)
 
 
 if __name__ == '__main__':

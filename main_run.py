@@ -5,6 +5,7 @@
 # ===================================
 import json
 import time
+from PIL import Image
 import pandas as pd
 import streamlit as st
 
@@ -24,7 +25,7 @@ def get_value_range(choose_range):
     '''处理choose_range，使其为合格的list'''
     min_value, max_value = choose_range.split('-')
     min_value_int = int(min_value)
-    max_value_int = int(max_value)+1
+    max_value_int = int(max_value) + 1
     range_list = range(min_value_int, max_value_int)
     return range_list
 
@@ -234,7 +235,9 @@ def show_answer(answer):
         st.markdown(answer)
     else:
         road = answer.split('![](')[-1].replace('\\', '/').replace(')', '')
-        st.image(road)
+        load_image = Image.open(road)
+        st.image(load_image)
+    st.write('\n')
 
 
 def get_data_range_list(class_data):
@@ -249,12 +252,12 @@ def get_data_range_list(class_data):
 def main_web():
     '''网页主要成份'''
     # 侧边栏
-    choose_topic = st.sidebar.selectbox('选择主题', ('数学分析', '高等代数'), index=0)
+    reading = True
+    choose_topic = st.sidebar.selectbox('选择主题', ('数学分析', '高等代数'), index=1)
     choose_class = st.sidebar.selectbox('单元', ('第一章', '第二章', '第三章', '第四章', '第五章',
                                                '第六章', '第七章', '第八章', '第九章', '第十章', '第十一章',
                                                '第十二章', '第十三章', '第十四章', '第十五章', '第十六章', '第十七章',
-                                               '第十八章', '第十九章', '第二十章', '第二十一章'), index=2)
-    # 主页面内容
+                                               '第十八章', '第十九章', '第二十章', '第二十一章'), index=8)
     if choose_class:
         st.title(choose_topic + choose_class + '习题测试')
         st.write('\n')
@@ -262,19 +265,42 @@ def main_web():
         class_data = data[data['单元'] == choose_class].reset_index(drop=True)
 
         # 选择小标题
-        subtitles = list(set(class_data['小标题']))
+        subtitles = ['全部'] + list(set(class_data['小标题']))
         choose_subtitle = st.sidebar.selectbox('小标题', subtitles)
-        class_data2 = class_data[class_data['小标题'] == choose_subtitle].reset_index(drop=True)
-
+        if choose_subtitle != '全部':
+            class_data2 = class_data[class_data['小标题'] == choose_subtitle].reset_index(drop=True)
+        else:
+            class_data2 = class_data.reset_index(drop=True)
         # 选择来源
-        source = list(set(class_data2['来源']))
+        source = ['全部'] + list(set(class_data2['来源']))
         choose_source = st.sidebar.selectbox('选择来源', source, index=0)
-        class_data3 = class_data[class_data['来源'] == choose_source].reset_index(drop=True)
+        if choose_source != '全部':
+            class_data3 = class_data2[class_data2['来源'] == choose_source].reset_index(drop=True)
+        else:
+            class_data3 = class_data2.reset_index(drop=True)
+        # choose_type = st.sidebar.checkbox('只看题目', value=True)
 
+        # 选择考点
+        points = ['全部'] + list(set(class_data2['知识点1']))
+        choose_point = st.sidebar.selectbox('知识点1', points, index=0)
+        if choose_point != '全部':
+            class_data4 = class_data3[class_data3['知识点1'] == choose_point].reset_index(drop=True)
+        else:
+            class_data4 = class_data3.reset_index(drop=True)
+    if reading:
+        for i in class_data4.index:
+            title1 = str(class_data4['小标题'][i])
+            title2 = str(class_data4['习题'][i])
+            st.markdown('`'+title1+' '+title2+'`')
+            st.markdown(class_data4['习题描述'][i])
+            flow = str(class_data4['流程'][i])
+            if flow!='nan':
+                show_answer(flow)
+    else:
         # 选择范围
-        range_list = get_data_range_list(class_data3)
+        range_list = get_data_range_list(class_data4)
         choose_range = st.sidebar.selectbox('范围', range_list)
-        test_pattern(class_data3, choose_range)
+        test_pattern(class_data4, choose_range)
 
 
 if __name__ == '__main__':
