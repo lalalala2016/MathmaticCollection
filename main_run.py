@@ -231,6 +231,7 @@ def test_pattern(class_data, choose_range):
 
 
 def show_answer(answer):
+    answer = str(answer)
     if '![]' not in answer:
         st.markdown(answer)
     else:
@@ -254,16 +255,19 @@ def main_web():
     # 侧边栏
     reading = True
     choose_topic = st.sidebar.selectbox('选择主题', ('数学分析', '高等代数'), index=1)
-    choose_class = st.sidebar.selectbox('单元', ('第一章', '第二章', '第三章', '第四章', '第五章',
-                                               '第六章', '第七章', '第八章', '第九章', '第十章', '第十一章',
-                                               '第十二章', '第十三章', '第十四章', '第十五章', '第十六章', '第十七章',
-                                               '第十八章', '第十九章', '第二十章', '第二十一章'), index=8)
+    class_list = ['全部'] + ['第一章', '第二章', '第三章', '第四章', '第五章',
+                           '第六章', '第七章', '第八章', '第九章', '第十章', '第十一章',
+                           '第十二章', '第十三章', '第十四章', '第十五章', '第十六章', '第十七章',
+                           '第十八章', '第十九章', '第二十章', '第二十一章']
+    choose_class = st.sidebar.selectbox('单元', class_list, index=21)
     if choose_class:
         st.title(choose_topic + choose_class + '习题测试')
         st.write('\n')
         data = read_data(choose_topic)
-        class_data = data[data['单元'] == choose_class].reset_index(drop=True)
-
+        if choose_class != '全部':
+            class_data = data[data['单元'] == choose_class].reset_index(drop=True)
+        else:
+            class_data = data.reset_index(drop=True)
         # 选择小标题
         subtitles = ['全部'] + list(set(class_data['小标题']))
         choose_subtitle = st.sidebar.selectbox('小标题', subtitles)
@@ -291,16 +295,20 @@ def main_web():
         for i in class_data4.index:
             title1 = str(class_data4['小标题'][i])
             title2 = str(class_data4['习题'][i])
-            st.markdown('`'+title1+' '+title2+'`')
-            st.markdown(class_data4['习题描述'][i])
+            st.markdown('`' + title1 + ' ' + title2 + '`')
+            show_answer(class_data4['习题描述'][i])
             flow = str(class_data4['流程'][i])
-            if flow!='nan':
+            if flow != 'nan':
                 show_answer(flow)
     else:
         # 选择范围
         range_list = get_data_range_list(class_data4)
         choose_range = st.sidebar.selectbox('范围', range_list)
         test_pattern(class_data4, choose_range)
+
+
+# 需求：增加功能，直接导出有道的markdown内容，txt就好，复制过去就可以了
+# $$前后加``太麻烦就不管，后续人工计算的时候加
 
 
 if __name__ == '__main__':
