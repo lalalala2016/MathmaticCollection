@@ -254,6 +254,7 @@ def main_web():
     '''网页主要成份'''
     # 侧边栏
     reading = True
+    random_testing = True  # 随机测试模式
     choose_topic = st.sidebar.selectbox('选择主题', ('数学分析', '高等代数'), index=1)
     class_list = ['全部'] + ['第一章', '第二章', '第三章', '第四章', '第五章',
                            '第六章', '第七章', '第八章', '第九章', '第十章', '第十一章',
@@ -309,7 +310,5 @@ def main_web():
 
 # 需求：增加功能，直接导出有道的markdown内容，txt就好，复制过去就可以了
 # $$前后加``太麻烦就不管，后续人工计算的时候加
-
-
 if __name__ == '__main__':
     main_web()
